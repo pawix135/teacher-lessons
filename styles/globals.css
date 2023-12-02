@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  cursor: url("/cursor.png"), auto;
+  font-family: "Red Hat Display", sans-serif;
+}
+
+a,
+p,
+span,
+b,
+h1,
+h2,
+h3,
+h4,
+img,
+button,
+.hoverek,
+input:hover {
+  cursor: url("/cursor_hover.png"), auto;
+}
+
+html {
+  background-image: url("/tlo.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+.reviews-bar {
+  scrollbar-width: auto;
+  scrollbar-color: #a946fe #ffffff42;
+}
+
+/* Chrome, Edge, and Safari */
+.reviews-bar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.reviews-bar::-webkit-scrollbar-track {
+  background: #ffffff42;
+}
+
+.reviews-bar::-webkit-scrollbar-thumb {
+  background-color: #a946fe;
+  border-radius: 10px;
+  border: 0px solid #ffffff;
+}

@@ -1,0 +1,51 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Teacher {
+  id   Int    @id @default(autoincrement())
+  name String
+  reviews Review[]
+  codes Codes[]
+  account Account?
+}
+
+model Account {
+  id Int @id @default(autoincrement())
+  login String
+  hash String
+  type AccountType @default(TEACHER)
+  teacher Teacher? @relation(fields: [teacherId], references: [id])
+  teacherId Int?
+}
+
+enum AccountType {
+  ADMIN
+  TEACHER
+
+}
+
+model Codes {
+  id Int @id @default(autoincrement())
+  code String @unique
+  active Boolean
+  teacher Teacher @relation(fields: [teacherId], references: [id])  
+  teacherId Int @default(1)
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+  name String
+  review String @db.VarChar(500)
+  teacher Teacher @relation(fields: [teacherId], references: [id])
+  teacherId Int
+  flagged Boolean @default(false)
+  created_at DateTime @default(now())
+}
