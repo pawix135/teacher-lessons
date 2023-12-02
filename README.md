@@ -1,3 +1,3 @@
 # Teacher reviews 
 
-Old NextJS project for adding reviews after lesson with teacher.
+After the lesson, students receive a code that allows them to add review.
